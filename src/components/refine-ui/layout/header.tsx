@@ -37,7 +37,7 @@ function DesktopHeader() {
         "bg-sidebar",
         "pr-3",
         "justify-end",
-        "z-40"
+        "z-40",
       )}
     >
       <ThemeToggle />
@@ -47,9 +47,8 @@ function DesktopHeader() {
 }
 
 function MobileHeader() {
-  const { open, isMobile } = useSidebar();
-
   const { title } = useRefineOptions();
+  const { toggleSidebar } = useSidebar();
 
   return (
     <header
@@ -58,68 +57,34 @@ function MobileHeader() {
         "top-0",
         "flex",
         "h-12",
-        "shrink-0",
         "items-center",
-        "gap-2",
         "border-b",
         "border-border",
         "bg-sidebar",
         "pr-3",
         "justify-between",
-        "z-40"
+        "z-40",
       )}
     >
-      <SidebarTrigger
-        className={cn("text-muted-foreground", "rotate-180", "ml-1", {
-          "opacity-0": open,
-          "opacity-100": !open || isMobile,
-          "pointer-events-auto": !open || isMobile,
-          "pointer-events-none": open && !isMobile,
-        })}
-      />
+      {/* First click collapse/expand */}
+      <SidebarTrigger className="text-muted-foreground ml-1" />
 
+      {/* Logo click toggles sidebar */}
       <div
-        className={cn(
-          "whitespace-nowrap",
-          "flex",
-          "flex-row",
-          "h-full",
-          "items-center",
-          "justify-start",
-          "gap-2",
-          "transition-discrete",
-          "duration-200",
-          {
-            "pl-3": !open,
-            "pl-5": open,
-          }
-        )}
+        className="flex items-center gap-2 cursor-pointer hover:opacity-80"
+        onClick={toggleSidebar}
       >
-        <div>{title.icon}</div>
-        <h2
-          className={cn(
-            "text-sm",
-            "font-bold",
-            "transition-opacity",
-            "duration-200",
-            {
-              "opacity-0": !open,
-              "opacity-100": open,
-            }
-          )}
-        >
-          {title.text}
-        </h2>
+        <div>{title?.icon}</div>
+        <h2 className="text-sm font-bold">{title?.text}</h2>
       </div>
 
-      <ThemeToggle className={cn("h-8", "w-8")} />
+      <ThemeToggle className="h-8 w-8" />
     </header>
   );
 }
 
 const UserDropdown = () => {
   const { mutate: logout, isPending: isLoggingOut } = useLogout();
-
   const authProvider = useActiveAuthProvider();
 
   if (!authProvider?.getIdentity) {
@@ -131,6 +96,7 @@ const UserDropdown = () => {
       <DropdownMenuTrigger>
         <UserAvatar />
       </DropdownMenuTrigger>
+
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           onClick={() => {
@@ -140,6 +106,7 @@ const UserDropdown = () => {
           <LogOutIcon
             className={cn("text-destructive", "hover:text-destructive")}
           />
+
           <span className={cn("text-destructive", "hover:text-destructive")}>
             {isLoggingOut ? "Logging out..." : "Logout"}
           </span>
