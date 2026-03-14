@@ -11,7 +11,7 @@ import "./App.css";
 import { Toaster } from "./components/refine-ui/notification/toaster";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
-import { dataProvider } from "./providers/data";
+import { dataProvider } from "./providers/data.ts";
 import DashBoard from "./pages/dashboard";
 import { BookOpen, GraduationCap, Home } from "lucide-react";
 import { Layout } from "./components/refine-ui/layout/layout";
@@ -72,6 +72,7 @@ function App() {
                   </Route>
                 </Route>
               </Routes>
+
               <Toaster />
               <RefineKbar />
               <UnsavedChangesNotifier />
