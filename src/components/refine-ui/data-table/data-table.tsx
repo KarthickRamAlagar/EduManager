@@ -80,7 +80,15 @@ export function DataTable<TData extends BaseRecord>({
 
   return (
     <div className={cn("flex", "flex-col", "flex-1", "gap-4")}>
-      <div ref={tableContainerRef} className={cn("rounded-md", "border")}>
+      <div
+        ref={tableContainerRef}
+        className={cn(
+          "rounded-md",
+          "border",
+          "overflow-x-auto",
+          "scrollbar-modern",
+        )}
+      >
         <Table ref={tableRef} style={{ tableLayout: "fixed", width: "100%" }}>
           <TableHeader>
             {getHeaderGroups().map((headerGroup) => (
@@ -102,7 +110,7 @@ export function DataTable<TData extends BaseRecord>({
                         <div className={cn("flex", "items-center", "gap-1")}>
                           {flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )}
                         </div>
                       )}
@@ -136,7 +144,7 @@ export function DataTable<TData extends BaseRecord>({
                         </TableCell>
                       ))}
                     </TableRow>
-                  )
+                  ),
                 )}
                 <TableRow>
                   <TableCell
@@ -153,7 +161,7 @@ export function DataTable<TData extends BaseRecord>({
                         "h-8",
                         "w-8",
                         "-translate-x-1/2",
-                        "-translate-y-1/2"
+                        "-translate-y-1/2",
                       )}
                     />
                   </TableCell>
@@ -180,7 +188,7 @@ export function DataTable<TData extends BaseRecord>({
                           <div className="truncate">
                             {flexRender(
                               cell.column.columnDef.cell,
-                              cell.getContext()
+                              cell.getContext(),
                             )}
                           </div>
                         </TableCell>
@@ -235,7 +243,7 @@ function DataTableNoData({
             "items-center",
             "justify-center",
             "gap-2",
-            "bg-background"
+            "bg-background",
           )}
           style={{
             position: isOverflowing.horizontal ? "sticky" : "absolute",
