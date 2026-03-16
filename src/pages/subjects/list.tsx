@@ -70,7 +70,7 @@ const SubjectList = () => {
         size: 180,
         header: () => <p className="column-title">Department</p>,
         cell: ({ getValue }) => (
-          <Badge className="w-[200px] justify-center bg-green-600 text-white hover:bg-green-600 rounded-full md:text-sm ">
+          <Badge className="w-[10rem] md:w-[200px] justify-center bg-green-600 text-white hover:bg-green-600 rounded-full text-xs md:text-sm ">
             {getValue<string>()}
           </Badge>
         ),

@@ -55,6 +55,14 @@ export const ALLOWED_TYPES = [
   "image/webp",
 ];
 
+const getEnvVar = (key: string): string => {
+  const value = import.meta.env[key];
+  if (!value) {
+    throw new Error(`Missing environment Vatriable : ${key}`);
+  }
+  return value;
+};
+
 export const CLOUDINARY_UPLOAD_URL = import.meta.env.VITE_CLOUDINARY_UPLOAD_URL;
 export const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 export const BACKEND_BASE_URL = "http://localhost:8000/api/v1/EduManager";
