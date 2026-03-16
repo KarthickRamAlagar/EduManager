@@ -66,11 +66,11 @@ const SubjectList = () => {
       },
       {
         id: "department",
-        accessorKey: "department",
+        accessorKey: "department.name",
         size: 180,
         header: () => <p className="column-title">Department</p>,
         cell: ({ getValue }) => (
-          <Badge className="w-[160px] justify-center bg-green-600 text-white hover:bg-green-600 rounded-full md:text-sm">
+          <Badge className="w-[200px] justify-center bg-green-600 text-white hover:bg-green-600 rounded-full md:text-sm ">
             {getValue<string>()}
           </Badge>
         ),
