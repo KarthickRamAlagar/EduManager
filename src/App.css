@@ -617,7 +617,7 @@ body {
 /* Modern Slim Scrollbar */
 
 .scrollbar-modern::-webkit-scrollbar {
-  height: 2px;
+  height: 1px;
 }
 
 .scrollbar-modern::-webkit-scrollbar-track {
@@ -637,6 +637,19 @@ body {
 /* Firefox */
 
 .scrollbar-modern {
-  scrollbar-width: thin;
+  scrollbar-width:thin;
   scrollbar-color: #e78ae7 #1a1a1a;
+}
+
+
+/* Chrome, Safari, Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
