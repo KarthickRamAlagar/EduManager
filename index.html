@@ -7,20 +7,70 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="refine | Build your React-based CRUD applications, without constraints."
+      content="EduManage is a smart attendance and class management system that tracks daily class activities, simplifies timetable handling, and manages roles like students, teachers, and admins. Built with React, Node.js, PostgreSQL, and TypeScript."
     />
+    
+    <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
+    <meta property="og:title" content="EduManage – Smart Attendance System" />
     <meta
-      data-rh="true"
+      property="og:description"
+      content="Track attendance, manage classes, and simplify academic workflows with EduManage."
+    />
+    <meta property="og:type" content="website" />
+    <meta
       property="og:image"
-      content="https://refine.dev/img/refine_social.png"
+      content="https://edu-manager-zeta.vercel.app/preview.png"
+    />
+    <meta property="og:url" content="https://edu-manager-zeta.vercel.app" />
+
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EduManage – Smart Attendance System" />
+    <meta
+      name="twitter:description"
+      content="Full-stack attendance and class management platform with role-based access."
     />
     <meta
-      data-rh="true"
       name="twitter:image"
-      content="https://refine.dev/img/refine_social.png"
+      content="https://edu-manager-zeta.vercel.app/preview.png"
     />
+
+
+    <!-- site 24x7 cdn script -->
+    <script type="text/javascript">
+      (function (w, d, s, r, k, h, m) {
+        if (
+          w.performance &&
+          w.performance.timing &&
+          w.performance.navigation &&
+          !w.s247r
+        ) {
+          w[r] =
+            w[r] ||
+            function () {
+              (w[r].q = w[r].q || []).push(arguments);
+            };
+          h = d.createElement("script");
+          h.async = true;
+          h.setAttribute("src", s + k);
+          d.getElementsByTagName("head")[0].appendChild(h);
+          (m = window.onerror),
+            (window.onerror = function (b, c, d, f, g) {
+              m && m(b, c, d, f, g),
+                g || (g = new Error(b)),
+                (w[r].q = w[r].q || []).push(["captureException", g]);
+            });
+        }
+      })(
+        window,
+        document,
+        "//static.site24x7rum.in/beacon/site24x7rum-min.js?appKey=",
+        "s247r",
+        "70ca9863c31d4fb0d107e70d837213cd",
+      );
+    </script>
     <title>
-      Refine - Build your React-based CRUD applications, without constraints.
+      EduManage | Smart Attendance System & Class Management Platform
     </title>
   </head>
   <body>
