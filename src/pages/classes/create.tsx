@@ -29,7 +29,6 @@ import { Loader2 } from "lucide-react";
 import { classSchema } from "@/lib/schema";
 import { Subject, User } from "@/types";
 import z from "zod";
-import { Label } from "@/components/ui/label";
 import UploadWidget from "@/components/upload-widget";
 
 const ClassesCreate = () => {
@@ -87,6 +86,9 @@ const ClassesCreate = () => {
 
   const subjects = subjectsQuery.data?.data || [];
   const subjectsLoading = subjectsQuery.isLoading;
+
+
+
 
   return (
     <CreateView className="class-view">
