@@ -159,7 +159,7 @@ export const SignInForm = () => {
               Sign in
             </Button>
 
-            <div className={cn("flex", "items-center", "gap-4", "mt-6")}>
+            {/* <div className={cn("flex", "items-center", "gap-4", "mt-6")}>
               <Separator className={cn("flex-1")} />
               <span className={cn("text-sm", "text-muted-foreground")}>or</span>
               <Separator className={cn("flex-1")} />
@@ -212,7 +212,7 @@ export const SignInForm = () => {
                   <div>GitHub</div>
                 </Button>
               </div>
-            </div>
+            </div> */}
           </form>
         </CardContent>
 

@@ -27,11 +27,11 @@ import UploadWidget from "@/components/upload-widget";
 import { UploadWidgetValue } from "@/types";
 
 export const SignUpForm = () => {
-  const [name, setName] = useState(""); // ✅ NEW
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("student"); // ✅ NEW
+  const [role, setRole] = useState("student");
   const [image, setImage] = useState<UploadWidgetValue | null>(null);
   const { open } = useNotification();
   const Link = useLink();
@@ -52,11 +52,11 @@ export const SignUpForm = () => {
     }
 
     register({
-      name, // ✅ REQUIRED
+      name, //  REQUIRED
       email,
       password,
-      role, // ✅ matches backend additionalFields
-      imageCldPubId: image?.publicId || null, // ✅ IMPORTANT
+      role, //  matches backend additionalFields
+      imageCldPubId: image?.publicId || null, //  IMPORTANT
     });
   };
 
@@ -117,7 +117,7 @@ export const SignUpForm = () => {
 
         <CardContent className={cn("px-0")}>
           <form onSubmit={handleSignUp}>
-            {/* ✅ NAME */}
+            {/*  NAME */}
             <div className={cn("flex", "flex-col", "gap-2")}>
               <Label htmlFor="name">Name</Label>
               <Input
@@ -129,7 +129,7 @@ export const SignUpForm = () => {
               />
             </div>
 
-            {/* ✅ EMAIL */}
+            {/* EMAIL */}
             <div className={cn("flex", "flex-col", "gap-2", "mt-6")}>
               <Label htmlFor="email">Email</Label>
               <Input
@@ -141,7 +141,7 @@ export const SignUpForm = () => {
               />
             </div>
 
-            {/* ✅ ROLE */}
+            {/* ROLE */}
             <div className={cn("flex", "flex-col", "gap-2", "mt-6")}>
               <Label htmlFor="role">Role</Label>
               <select
@@ -181,7 +181,7 @@ export const SignUpForm = () => {
                 required
               />
             </div>
-            {/* ✅ PROFILE IMAGE */}
+            {/* PROFILE IMAGE */}
             <div className={cn("flex", "flex-col", "gap-2", "mt-6")}>
               <Label>Profile Image</Label>
               <UploadWidget
@@ -205,14 +205,14 @@ export const SignUpForm = () => {
               Sign up
             </Button>
 
-            {/* OR */}
+            {/* OR
             <div className={cn("flex", "items-center", "gap-4", "mt-6")}>
               <Separator className={cn("flex-1")} />
               <span className={cn("text-sm", "text-muted-foreground")}>or</span>
               <Separator className={cn("flex-1")} />
-            </div>
+            </div> */}
 
-            {/* SOCIAL LOGIN */}
+            {/* SOCIAL LOGIN
             <div className={cn("flex", "flex-col", "gap-4", "mt-6")}>
               <div className={cn("grid grid-cols-2", "gap-6")}>
                 <Button
@@ -230,7 +230,7 @@ export const SignUpForm = () => {
                   GitHub
                 </Button>
               </div>
-            </div>
+            </div> */}
           </form>
         </CardContent>
 

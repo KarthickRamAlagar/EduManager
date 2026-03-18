@@ -1,7 +1,7 @@
 import type { AuthProvider } from "@refinedev/core";
 import { User, SignUpPayload } from "@/types";
 import { authClient } from "@/lib/auth-client";
-import { CLOUDINARY_CLOUD_NAME } from "@/constants";
+import { BACKEND_BASE_URL, CLOUDINARY_CLOUD_NAME } from "@/constants";
 
 export const authProvider: AuthProvider = {
   register: async ({
@@ -51,25 +51,72 @@ export const authProvider: AuthProvider = {
       };
     }
   },
-  login: async ({ email, password }) => {
+  // login: async ({ email, password }) => {
+  //   try {
+  //     const { data, error } = await authClient.signIn.email({
+  //       email: email,
+  //       password: password,
+  //     });
+
+  //     if (error) {
+  //       console.error("Login error from auth client:", error);
+  //       return {
+  //         success: false,
+  //         error: {
+  //           name: "Login failed",
+  //           message: error?.message || "Please try again later.",
+  //         },
+  //       };
+  //     }
+
+  //     // Store user data
+  //     localStorage.setItem("user", JSON.stringify(data.user));
+
+  //     return {
+  //       success: true,
+  //       redirectTo: "/",
+  //     };
+  //   } catch (error) {
+  //     console.error("Login exception:", error);
+  //     return {
+  //       success: false,
+  //       error: {
+  //         name: "Login failed",
+  //         message: "Please try again later.",
+  //       },
+  //     };
+  //   }
+  // },
+  login: async (params: any) => {
     try {
+      const { email, password, providerName } = params;
+
+      // 🔥 OAuth Login
+      if (providerName === "google" || providerName === "github") {
+        window.location.href = `${BACKEND_BASE_URL}/auth/${providerName}`;
+
+        return {
+          success: true,
+          redirectTo: undefined, // ✅ REQUIRED for type safety
+        };
+      }
+
+      // ✅ Normal login
       const { data, error } = await authClient.signIn.email({
-        email: email,
-        password: password,
+        email,
+        password,
       });
 
       if (error) {
-        console.error("Login error from auth client:", error);
         return {
           success: false,
           error: {
             name: "Login failed",
-            message: error?.message || "Please try again later.",
+            message: error?.message || "Invalid credentials",
           },
         };
       }
 
-      // Store user data
       localStorage.setItem("user", JSON.stringify(data.user));
 
       return {
@@ -77,16 +124,16 @@ export const authProvider: AuthProvider = {
         redirectTo: "/",
       };
     } catch (error) {
-      console.error("Login exception:", error);
       return {
         success: false,
         error: {
           name: "Login failed",
-          message: "Please try again later.",
+          message: "Something went wrong",
         },
       };
     }
   },
+
   logout: async () => {
     const { error } = await authClient.signOut();
 
